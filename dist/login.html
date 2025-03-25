@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="author" content="BeneDeFi">
+    <meta name="keywords" content="Paranora,Furniture,Product,List,Page">
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="2025 company.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="decentralized exchange">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Login Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[url('/images/login-bg.png')]"">
+    <div class="flex justify-center text-center items-center mt-10">
+        <div class="backdrop-blur-md border-2 border-white p-10  mt-20 shadow-lg rounded-2xl">
+            <div class="space-y-3">
+                <p class="text-gray-100" for="">Enter Your Name</p>
+                <input type="text" id="name" placeholder="Enter Your Name" class="p-2 rounded placeholder-gray-500 focus:outline-none">
+                <p class="text-gray-100" for="">Enter Your Password</p>
+                <input type="password" id="password" placeholder="Enter Your Password" class="p-2 rounded placeholder-gray-500 focus:outline-none">
+            </div>
+            <button class="px-5 py-2 bg-blue-700 rounded-xl mt-3 text-gray-300" id="loginButton">Login</button>
+            <p id="error-message" class="text-red-500 mt-3"></p>
+            <div>
+                <p  class="text-white text-xl">Don't have an account? <span id="register-btn" class="text-blue-500 cursor-pointer">Register</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let registerBtn = document.querySelector("#register-btn");
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+            let enteredname = document.getElementById('name').value;
+            let enteredPassword = document.getElementById('password').value;
+
+            let storedUserData = localStorage.getItem('userData');
+            
+
+            if (storedUserData) {
+                let userData = JSON.parse(storedUserData);
+                
+
+                if (enteredname === userData.name && enteredPassword === userData.password) {
+
+                    localStorage.setItem('isLoggedIn', 'true');
+
+                    window.location.href = "weather.html";
+                } else {
+
+                    document.getElementById('error-message').textContent = "Incorrect username or password.";
+                }
+            } else {
+
+                document.getElementById('error-message').textContent = "No user found. Please register first.";
+            }
+        });
+        registerBtn.addEventListener("click", () =>{
+            setTimeout(() => {
+                window.location.href = "index.html"
+            }, 1000)
+        });
+    </script>
+</body>
+</html>

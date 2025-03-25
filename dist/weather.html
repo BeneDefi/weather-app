@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="author" content="BeneDeFi">
+    <meta name="keywords" content="Paranora,Furniture,Product,List,Page">
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="2025 company.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="decentralized exchange">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="flex justify-center bg-[url('/images/login-bg.png')]">
+    <div class="backdrop-blur-md border-2 border-white p-10 mt-28 rounded-2xl">
+        <div class="flex justify-center text-center items-center">
+            <div class="space-y-5">
+                <div>
+                    <P id="welcome" class="text-2xl text-gray-300 font-semibold"><span
+                            class="text-3xl font-medium text-blue-500"></span></P>
+                </div>
+                <h1 class="font-bold text-3xl text-gray-300">Simple Weather App</h1>
+                <div>
+                    <input type="text" id="search" placeholder="Search City"
+                        class="border border-gray-400 rounded-md p-2">
+                    <button id="searchBtn" class="px-5 py-2 bg-blue-500 rounded-3xl text-gray-100 mx-3">Search</button>
+                </div>
+                <div>
+                    <div class="space-y-3">
+                        <h2 class="text-blue-200 font-semibold text-3xl" id="city">City Name</h2>
+                        <h3 class="text-blue-200 font-semibold text-2xl" id="temp">Temperature</h3>
+                        <h4 class="text-blue-200 font-semibold text-xl" id="desc">Description</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let welcome = document.querySelector('#welcome')
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let userData = JSON.parse(localStorage.getItem('userData'));
+            if (userData.name) {
+                welcome.innerHTML = `Welcome <span class="font-medium text-3xl text-gray-100">${userData.name} </span> to your`
+            }
+        });
+
+        let search = document.querySelector('#search');
+        let searchBtn = document.querySelector('#searchBtn');
+        let city = document.querySelector('#city');
+        let temp = document.querySelector('#temp');
+        let desc = document.querySelector('#desc');
+
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            let location = search.value;
+            if (location) {
+                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=9e468d49e6049cd816e506a87d7a27bc`)
+                    .then(res => res.json())
+                    .then(data => {
+                        city.innerHTML = data.name;
+                        temp.innerHTML = Math.round(data.main.temp - 273.15) + '°C';
+                        desc.innerHTML = data.weather[0].description;
+                    })
+                    .catch(err => {
+                        city.innerHTML = 'City Not Found';
+                        temp.innerHTML = '';
+                        desc.innerHTML = '';
+                    });
+            } else {
+                city.innerHTML = 'Please Enter City Name';
+                temp.innerHTML = '';
+                desc.innerHTML = '';
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
