@@ -588,6 +588,10 @@ video {
   display: flex;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .w-\[600px\] {
   width: 600px;
 }
@@ -666,6 +670,26 @@ video {
 
 .bg-\[url\(\'\/dist\/login-bg\.png\'\)\] {
   background-image: url('/dist/login-bg.png');
+}
+
+.bg-\[url\(\'https\:\/\/postimg\.cc\/DWgV3Lwn\'\)\] {
+  background-image: url('https://postimg.cc/DWgV3Lwn');
+}
+
+.bg-\[url\(\'\/\'\)\] {
+  background-image: url('/');
+}
+
+.bg-\[url\(\'https\:\/\/i\.postimg\.cc\/76vq7NvG\/login-bg\.png\'\)\] {
+  background-image: url('https://i.postimg.cc/76vq7NvG/login-bg.png');
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
 }
 
 .p-10 {
