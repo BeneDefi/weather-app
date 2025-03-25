@@ -778,6 +778,10 @@ video {
   --tw-bg-opacity: 0.1;
 }
 
+.bg-\[url\(\'\/dist\/images\/login-bg\.png\'\)\] {
+  background-image: url('/dist/images/login-bg.png');
+}
+
 .bg-\[url\(\'\/images\/login-bg\.png\'\)\] {
   background-image: url('/images/login-bg.png');
 }
@@ -860,11 +864,6 @@ video {
   line-height: 2.25rem;
 }
 
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -902,11 +901,6 @@ video {
   color: rgb(59 130 246 / var(--tw-text-opacity, 1));
 }
 
-.text-blue-900 {
-  --tw-text-opacity: 1;
-  color: rgb(30 58 138 / var(--tw-text-opacity, 1));
-}
-
 .text-gray-100 {
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity, 1));
@@ -925,11 +919,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.text-blue-100 {
-  --tw-text-opacity: 1;
-  color: rgb(219 234 254 / var(--tw-text-opacity, 1));
 }
 
 .placeholder-gray-500::-moz-placeholder {
